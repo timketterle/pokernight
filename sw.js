@@ -1,5 +1,5 @@
 /* Poker Night: offline-fähig. Eigene Dateien zuerst aus dem Netz (immer aktuell), sonst aus dem Cache. */
-const C='pokernight-v5';
+const C='pokernight-v5b';
 const CORE=['./','index.html','tafel.html','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
